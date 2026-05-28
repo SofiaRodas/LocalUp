@@ -1,0 +1,28 @@
+.topbar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.topbar input{
+  width: 350px;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1E293B;
+  color: white;
+}
+
+.topbar-user{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-user img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
