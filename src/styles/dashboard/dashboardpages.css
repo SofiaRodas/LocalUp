@@ -1,0 +1,102 @@
+/* =========================================
+   PÁGINAS DASHBOARD
+========================================= */
+
+.page-section {
+  width: 100%;
+}
+
+.page-section h1 {
+  color: #FACC15;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.page-section p {
+  color: #CBD5E1;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+
+/* =========================================
+   GRID GENERAL
+========================================= */
+
+.page-grid,
+.favoritos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 25px;
+}
+
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.page-card,
+.favorito-card,
+.evento-card {
+  background-color: #1E293B;
+  padding: 35px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.page-card:hover,
+.favorito-card:hover,
+.evento-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(96,165,250,0.25);
+}
+
+
+/* =========================================
+   EVENTOS
+========================================= */
+
+.eventos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+/* =========================================
+   PERFIL
+========================================= */
+
+.perfil-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.perfil-section img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin-bottom: 25px;
+  border: 4px solid #FACC15;
+}
+
+.perfil-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.perfil-stats h2 {
+  color: #FACC15;
+  font-size: 2rem;
+}
+
+.perfil-stats span {
+  color: #CBD5E1;
+}

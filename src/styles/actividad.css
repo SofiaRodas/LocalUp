@@ -1,0 +1,70 @@
+/* =========================================
+   ACTIVIDAD RECIENTE
+========================================= */
+
+.actividad-section {
+  margin-top: 70px;
+}
+
+.actividad-section h2 {
+  color: #FACC15;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+
+
+/* ITEM */
+
+.actividad-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #1E293B;
+  padding: 18px;
+  border-radius: 15px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: 0.3s ease;
+}
+
+.actividad-item:hover {
+  transform: translateX(5px);
+  border-color: rgba(250,204,21,0.3);
+}
+
+
+
+/* AVATAR */
+
+.actividad-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FACC15;
+  color: #0F172A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+
+
+/* TEXTO */
+
+.actividad-info p {
+  color: #F8FAFC;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.actividad-info span {
+  color: #FACC15;
+  margin-left: 5px;
+}
+
+.actividad-info small {
+  color: #94A3B8;
+}

@@ -1,0 +1,47 @@
+.contacto {
+  padding: 60px;
+  text-align: center;
+}
+
+.contacto h2 {
+  font-size: 38px;
+  color: #FACC15;
+  margin-bottom: 30px;
+}
+
+form {
+  width: 400px;
+  max-width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  background-color: #1E293B;
+  color: white;
+}
+
+textarea {
+  height: 120px;
+}
+
+form button {
+  background-color: #FACC15;
+  color: #0F172A;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+form button:hover {
+  background-color: #FDE047;
+}

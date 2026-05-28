@@ -1,0 +1,119 @@
+.auth-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+
+/* =========================================
+   CAJA LOGIN/REGISTER
+========================================= */
+
+.auth-box{
+  width: 100%;
+  max-width: 420px;
+  background-color: #334155;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(96,165,250,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+.auth-tabs{
+  display: flex;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.auth-tabs button{
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #1E293B;
+  color: #CBD5E1;
+  transition: 0.3s ease;
+}
+
+
+/* TAB ACTIVA */
+
+.auth-tabs .activo{
+  background-color: #FACC15;
+  color: #0F172A;
+}
+
+
+/* =========================================
+   FORMULARIO
+========================================= */
+
+.auth-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-form h2{
+  text-align: center;
+  color: #F8FAFC;
+  margin-bottom: 10px;
+}
+
+
+
+/* INPUTS */
+
+.auth-form input{
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1E293B;
+  color: #F8FAFC;
+  outline: none;
+  font-size: 15px;
+  border: 1px solid transparent;
+  transition: 0.3s ease;
+}
+
+
+
+/* INPUT FOCUS */
+
+.auth-form input:focus{
+  border: 1px solid #2563EB;
+  box-shadow: 0 0 10px rgba(37,99,235,0.4);
+}
+
+
+
+/* BOTÓN */
+
+.auth-form button{
+  background-color: #FACC15;
+  color: #0F172A;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+
+/* HOVER BOTÓN */
+
+.auth-form button:hover{
+  background-color: #FDE047;
+  transform: scale(1.03);
+}

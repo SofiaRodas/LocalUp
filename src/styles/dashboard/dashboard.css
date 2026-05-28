@@ -1,0 +1,79 @@
+.dashboard{
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom,#0F172A,#1E293B);
+}
+
+.dashboard-content{
+  margin-left: 250px;
+  width: 100%;
+  padding: 50px;
+}
+
+.dashboard-wrapper{
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.stats-grid{
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+/* =========================================
+   MAPA
+========================================= */
+
+.mapa-section{
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.mapa-section h2{
+  text-align: center;
+  color: #FACC15;
+  margin-bottom: 35px;
+  font-size: 2.2rem;
+}
+
+.mapa-container{
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(96,165,250,0.15);
+}
+
+
+.lugares-section{
+  margin-bottom: 80px;
+}
+
+.lugares-section h2{
+  text-align: center;
+  color: #FACC15;
+  margin-bottom: 40px;
+  font-size: 42px;
+}
+
+.lugares-grid{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.actividad-section{
+  max-width: 900px;
+  margin: auto;
+}
+
+.actividad-section h2{
+  text-align: center;
+  color: #FACC15;
+  margin-bottom: 40px;
+  font-size: 42px;
+}
