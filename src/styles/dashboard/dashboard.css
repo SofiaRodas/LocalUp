@@ -1,79 +1,155 @@
 .dashboard{
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(to bottom,#0F172A,#1E293B);
+  background: #0F172A;
 }
 
+/* =========================
+   CONTENIDO
+========================= */
+
 .dashboard-content{
-  margin-left: 250px;
-  width: 100%;
-  padding: 50px;
+  flex: 1;
+  margin-left: 260px;
+  padding: 30px;
 }
 
 .dashboard-wrapper{
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
 }
+
+/* =========================
+   TITULOS
+========================= */
+
+.dashboard h2{
+  color: #FACC15;
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+/* =========================
+   STATS
+========================= */
 
 .stats-grid{
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
   gap: 25px;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 
-/* =========================================
-   MAPA
-========================================= */
-
-.mapa-section{
-  width: 100%;
-  margin-bottom: 80px;
-}
-
-.mapa-section h2{
-  text-align: center;
-  color: #FACC15;
-  margin-bottom: 35px;
-  font-size: 2.2rem;
-}
-
-.mapa-container{
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(96,165,250,0.15);
-}
-
+/* =========================
+   LUGARES
+========================= */
 
 .lugares-section{
-  margin-bottom: 80px;
-}
-
-.lugares-section h2{
-  text-align: center;
-  color: #FACC15;
-  margin-bottom: 40px;
-  font-size: 42px;
+  margin-bottom: 60px;
 }
 
 .lugares-grid{
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  gap: 25px;
 }
 
+/* =========================
+   TARJETAS LUGARES
+========================= */
+
+.lugar-card{
+  background: #1E293B;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: .3s;
+  border: 1px solid rgba(255,255,255,.05);
+}
+
+.lugar-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+
+.lugar-card img{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.lugar-info{
+  padding: 20px;
+}
+
+.lugar-info h3{
+  color: #F8FAFC;
+  margin-bottom: 10px;
+}
+
+.lugar-info p{
+  color: #94A3B8;
+}
+
+.lugar-info span{
+  color: #FACC15;
+  font-weight: bold;
+}
+
+/* =========================
+   BOTON FAVORITOS
+========================= */
+
+.favorito-btn{
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #FACC15;
+  color: #0F172A;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.favorito-btn:hover{
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MAPA
+========================= */
+
+.mapa-section{
+  margin-bottom: 60px;
+}
+
+.mapa-container{
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.05);
+}
+
+/* =========================
+   ACTIVIDAD
+========================= */
+
 .actividad-section{
-  max-width: 900px;
-  margin: auto;
+  width: 100%;
 }
 
 .actividad-section h2{
-  text-align: center;
-  color: #FACC15;
-  margin-bottom: 40px;
-  font-size: 42px;
+  margin-bottom: 25px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .dashboard-content{
+    margin-left: 0;
+    padding: 20px;
+  }
+
 }

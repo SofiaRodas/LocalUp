@@ -1,9 +1,14 @@
 import Sidebar from "../../componentes/dashboard/Sidebar";
 import Topbar from "../../componentes/dashboard/Topbar";
-
+import { auth } from "../../firebase/firebaseConfig";
 import "../../styles/dashboard/dashboardpages.css";
+import { useAuth } from "../../context/AuthContext";
+
 
 function Perfil() {
+  
+  const { user } = useAuth();
+  const usuario = auth.currentUser;
 
   return (
 
@@ -18,11 +23,13 @@ function Perfil() {
         <section className="page-section perfil-section">
 
           <img
-            src="https://i.pravatar.cc/150?img=32"
+            src={usuario?.photoURL || "https://i.pravatar.cc/150?img=32"}
             alt=""
           />
 
-          <h1>Sofía Rodas</h1>
+          <h2>
+            Bienvenida {user?.email}
+          </h2>
 
           <p>
             Exploradora urbana y amante de descubrir nuevos lugares.
@@ -30,20 +37,17 @@ function Perfil() {
 
           <div className="perfil-stats">
 
-            <div>
-              <h2>128</h2>
-              <span>Lugares</span>
-            </div>
+            <h2>Mi Perfil</h2>
 
-            <div>
-              <h2>42</h2>
-              <span>Eventos</span>
-            </div>
+            <p>
+              <strong>Correo:</strong>
+              {usuario?.email}
+            </p>
 
-            <div>
-              <h2>19</h2>
-              <span>Favoritos</span>
-            </div>
+            <p>
+              <strong>UID:</strong>
+              {usuario?.uid}
+            </p>
 
           </div>
 
