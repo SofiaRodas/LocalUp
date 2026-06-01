@@ -1,11 +1,32 @@
-import {useNavigate} from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { iniciarSesion } from "../services/authService";
 
 function Login() {
+
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+
     e.preventDefault();
-    navigate("/dashboard");
+
+    try {
+
+      await iniciarSesion(email, password);
+
+      navigate("/dashboard");
+
+    } catch (error) {
+
+      alert("Correo o contraseña incorrectos");
+
+      console.log(error);
+    }
   };
 
   return (
@@ -17,11 +38,15 @@ function Login() {
       <input
         type="email"
         placeholder="Correo electrónico"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
         type="password"
         placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <button type="submit">

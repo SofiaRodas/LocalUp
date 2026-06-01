@@ -1,0 +1,148 @@
+.negocios{
+
+  padding: 100px 70px;
+
+  text-align: center;
+}
+
+.negocios h2{
+
+  color: #F8FAFC;
+
+  font-size: 3rem;
+
+  margin-bottom: 60px;
+}
+
+.cards-negocios{
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+
+  gap: 30px;
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.negocio{
+
+  background: #1E293B;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  transition: .3s;
+
+  border: 1px solid rgba(255,255,255,.05);
+}
+
+.negocio:hover{
+
+  transform: translateY(-8px);
+
+  box-shadow: 0 15px 30px rgba(0,0,0,.3);
+}
+
+/* ==========================
+   IMAGEN
+========================== */
+
+.negocio-img{
+
+  position: relative;
+}
+
+.negocio-img img{
+
+  width: 100%;
+
+  height: 240px;
+
+  object-fit: cover;
+}
+
+/* ==========================
+   CATEGORIA
+========================== */
+
+.categoria{
+
+  position: absolute;
+
+  top: 15px;
+
+  left: 15px;
+
+  background: rgba(15,23,42,.85);
+
+  color: white;
+
+  padding: 8px 12px;
+
+  border-radius: 999px;
+
+  font-size: .85rem;
+}
+
+/* ==========================
+   INFO
+========================== */
+
+.negocio-info{
+
+  padding: 25px;
+}
+
+.negocio-info h3{
+
+  color: #FACC15;
+
+  margin-bottom: 15px;
+
+  font-size: 1.5rem;
+}
+
+.negocio-info p{
+
+  color: #CBD5E1;
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+}
+
+/* ==========================
+   BOTON
+========================== */
+
+.negocio-info button{
+
+  width: 100%;
+
+  border: none;
+
+  background: #FACC15;
+
+  color: #0F172A;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition: .3s;
+}
+
+.negocio-info button:hover{
+
+  transform: translateY(-2px);
+
+  background: #FDE047;
+}

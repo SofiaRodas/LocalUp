@@ -1,21 +1,18 @@
 import "../../styles/dashboard/activitycard.css";
 
 function ActivityCard({ usuario, accion, tiempo }) {
-
   return (
+    <div className="actividad-item">
 
-    <div className="activity-card">
-
-      <div className="activity-avatar">
-
-        {usuario.charAt(0)}
+      <div className="actividad-avatar">
+        {usuario.charAt(0).toUpperCase()}
       </div>
 
-      <div>
+      <div className="actividad-info">
 
-        <h4>{accion}</h4>
+        <p>{accion}</p>
 
-        <p>{tiempo}</p>
+        <small>{tiempo}</small>
 
       </div>
 

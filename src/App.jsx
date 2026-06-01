@@ -12,6 +12,7 @@ import Lugares from "./pages/dashboard/Lugares";
 import Eventos from "./pages/dashboard/Eventos";
 import Favoritos from "./pages/dashboard/Favoritos";
 import Perfil from "./pages/dashboard/Perfil";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
 
@@ -42,10 +43,14 @@ function App() {
             DASHBOARD PRINCIPAL
         ========================================= */}
 
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
+          <Route
+            path="/dashboard"
+            element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+            }
+          />
 
         {/* =========================================
             PÁGINAS INTERNAS DASHBOARD

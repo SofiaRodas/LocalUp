@@ -1,59 +1,117 @@
-import '../styles/negocios.css'
+import "../styles/negocios.css";
 
 function Negocios() {
   return (
     <section className="negocios" id="negocios">
-      <h2>Descubre la Ciudad</h2>
+
+      <span className="section-tag">
+        Explora la ciudad
+      </span>
+
+      <h2>
+        Descubre experiencias que valen la pena
+      </h2>
 
       <div className="cards-negocios">
-        <div className="negocio">
-          <img
-            src="https://www.shutterstock.com/image-photo/night-colombia-4-south-bridge-260nw-1583664031.jpg"
-            alt="Restaurante"
-          />
 
-          <h3>Degusta</h3>
+        <article className="negocio">
 
-          <p>
-            La guía definitiva para comer como un local, desde alta cocina hasta
-            el secreto mejor guardado del barrio.
-          </p>
+          <div className="negocio-img">
 
-          <button>¿Qué hay de bueno?</button>
-        </div>
+            <img
+              src="https://www.shutterstock.com/image-photo/night-colombia-4-south-bridge-260nw-1583664031.jpg"
+              alt="Gastronomía"
+            />
 
-        <div className="negocio">
-          <img
-            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/6c/a5/ef/ven-y-dejate-contar-la.jpg?w=900&h=500&s=1"
-            alt="Eventos"
-          />
+            <span className="categoria">
+              🍽 Gastronomía
+            </span>
 
-          <h3>Vive</h3>
+          </div>
 
-          <p>
-            No te pierdas de nada. Conciertos, ferias y encuentros que están
-            ocurriendo ahora mismo.
-          </p>
+          <div className="negocio-info">
 
-          <button>¿Dónde parchar?</button>
-        </div>
+            <h3>Degusta</h3>
 
-        <div className="negocio">
-          <img
-            src="https://www.shutterstock.com/image-photo/medellin-antioquia-colombia-june-22-260nw-2330891965.jpg"
-            alt="Reviews"
-          />
+            <p>
+              La guía definitiva para comer como un local.
+              Desde restaurantes reconocidos hasta joyas ocultas.
+            </p>
 
-          <h3>Confía</h3>
+            <button>
+              Explorar lugares
+            </button>
 
-          <p>
-            Lee historias reales y recomendaciones sin filtros de personas que
-            ya vivieron la experiencia.
-          </p>
+          </div>
 
-          <button>Ver reviews</button>
-        </div>
+        </article>
+
+        <article className="negocio">
+
+          <div className="negocio-img">
+
+            <img
+              src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/6c/a5/ef/ven-y-dejate-contar-la.jpg?w=900&h=500&s=1"
+              alt="Eventos"
+            />
+
+            <span className="categoria">
+              🎉 Eventos
+            </span>
+
+          </div>
+
+          <div className="negocio-info">
+
+            <h3>Vive</h3>
+
+            <p>
+              Conciertos, ferias, festivales y experiencias
+              que están ocurriendo cerca de ti.
+            </p>
+
+            <button>
+              Ver eventos
+            </button>
+
+          </div>
+
+        </article>
+
+        <article className="negocio">
+
+          <div className="negocio-img">
+
+            <img
+              src="https://www.shutterstock.com/image-photo/medellin-antioquia-colombia-june-22-260nw-2330891965.jpg"
+              alt="Reviews"
+            />
+
+            <span className="categoria">
+              ⭐ Reseñas
+            </span>
+
+          </div>
+
+          <div className="negocio-info">
+
+            <h3>Confía</h3>
+
+            <p>
+              Descubre opiniones auténticas de personas
+              que ya visitaron estos lugares.
+            </p>
+
+            <button>
+              Ver reseñas
+            </button>
+
+          </div>
+
+        </article>
+
       </div>
+
     </section>
   );
 }

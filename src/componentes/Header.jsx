@@ -3,19 +3,13 @@ import { Link } from "react-router-dom";
 import "../styles/header.css";
 
 function Header() {
-
   return (
-
     <header className="header">
 
-      {/* LOGO */}
-
-      <div className="logo">
+      <Link to="/" className="logo">
+        <span className="logo-icon">LU</span>
         <h1>LocalUp</h1>
-      </div>
-
-
-      {/* NAVEGACIÓN */}
+      </Link>
 
       <nav className="nav-links">
 
@@ -29,17 +23,12 @@ function Header() {
 
       </nav>
 
-
-      {/* BOTÓN LOGIN */}
-
       <div className="header-buttons">
 
         <Link to="/login">
-
-          <button>
+          <button className="login-btn">
             Iniciar sesión
           </button>
-
         </Link>
 
       </div>

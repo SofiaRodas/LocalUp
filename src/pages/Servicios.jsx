@@ -1,36 +1,66 @@
-import '../styles/servicios.css'
+import "../styles/servicios.css";
 
 function Servicios() {
   return (
     <section className="servicios" id="servicios">
-      <h2>Experiencias que convierten</h2>
+
+      <span className="section-tag">
+        ¿Qué puedes hacer?
+      </span>
+
+      <h2>
+        Experiencias que conectan personas y negocios
+      </h2>
 
       <div className="cards">
+
         <article className="card">
+
+          <div className="card-icon">
+            📍
+          </div>
+
           <h3>Explora</h3>
 
           <p>
-            Encuentra restaurantes, eventos y lugares únicos cerca de ti.
+            Descubre restaurantes, cafeterías,
+            parques y lugares únicos cerca de ti.
           </p>
+
         </article>
 
         <article className="card">
+
+          <div className="card-icon">
+            🚀
+          </div>
+
           <h3>Impulsa</h3>
 
           <p>
-            Conectamos negocios y eventos con clientes que buscan nuevas
-            experiencias locales.
+            Promociona negocios locales y conecta
+            con nuevos clientes.
           </p>
+
         </article>
 
         <article className="card">
+
+          <div className="card-icon">
+            ⭐
+          </div>
+
           <h3>Descubre</h3>
 
           <p>
-            Planes y recomendaciones que están moviendo la ciudad.
+            Encuentra recomendaciones reales
+            y tendencias de tu ciudad.
           </p>
+
         </article>
+
       </div>
+
     </section>
   );
 }

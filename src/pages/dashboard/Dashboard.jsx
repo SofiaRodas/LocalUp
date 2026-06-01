@@ -3,11 +3,35 @@ import Topbar from "../../componentes/dashboard/Topbar";
 import StatsCard from "../../componentes/dashboard/StatsCard";
 import LugarCard from "../../componentes/dashboard/LugarCard";
 import ActivityCard from "../../componentes/dashboard/ActivityCard";
+import { useEffect, useState } from "react";
+import { obtenerLugares } from "../../services/lugaresService";
 import Mapa from "../../componentes/dashboard/Mapa";
-
 import "../../styles/dashboard/dashboard.css";
 
+import {
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaHeart
+} from "react-icons/fa";
+
+
+
 function Dashboard() {
+  const [lugares, setLugares] = useState([]);
+
+  useEffect(() => {
+
+  const cargarLugares = async () => {
+
+    const data = await obtenerLugares();
+
+    setLugares(data);
+  };
+
+  cargarLugares();
+
+  }, []);
+
 
   return (
 
@@ -26,16 +50,19 @@ function Dashboard() {
             <StatsCard
               titulo="Lugares visitados"
               numero="128"
+              icono={<FaMapMarkerAlt />}
             />
 
             <StatsCard
               titulo="Eventos activos"
               numero="42"
+              icono={<FaCalendarAlt />}
             />
 
             <StatsCard
               titulo="Favoritos"
               numero="19"
+              icono={<FaHeart />}
             />
 
           </section>
@@ -44,30 +71,22 @@ function Dashboard() {
 
             <h2>Lugares recomendados</h2>
 
-            <div className="lugares-grid">
+            <section className="lugares-grid">
 
-              <LugarCard
-                imagen="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
-                nombre="Sky Bar"
-                categoria="Bar"
-                rating="4.9"
-              />
+              {lugares.map((lugar) => (
 
-              <LugarCard
-                imagen="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
-                nombre="Pizza Downtown"
-                categoria="Restaurante"
-                rating="4.8"
-              />
+                <LugarCard
+                  key={lugar.id}
+                  id={lugar.id}
+                  imagen={lugar.imagen}
+                  nombre={lugar.nombre}
+                  categoria={lugar.categoria}
+                  rating={lugar.rating}
+                />
 
-              <LugarCard
-                imagen="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
-                nombre="Mi Pancito Dulce"
-                categoria="Panadería"
-                rating="4.4"
-              />
+              ))}
 
-            </div>
+            </section>
 
           </section>
 
