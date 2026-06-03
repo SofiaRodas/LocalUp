@@ -1,19 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig";
-
-
-import {
-  FaHome,
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaHeart,
-  FaUser,
-  FaSignOutAlt
-} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 import "../../styles/dashboard/sidebar.css";
-
 
 function Sidebar() {
 
@@ -30,68 +20,52 @@ function Sidebar() {
 
     <aside className="sidebar">
 
-      <div>
+      <h2>LocalUp</h2>
 
-        <div className="sidebar-logo">
+      <nav>
 
-          <div className="logo-circle">
-            LU
-          </div>
+        <Link to="/dashboard">
+          🏠 Inicio
+        </Link>
 
-          <div>
+        <Link to="/dashboard/lugares">
+          📍 Lugares
+        </Link>
 
-            <h2>LocalUp</h2>
+        <Link to="/dashboard/eventos">
+          📅 Eventos
+        </Link>
 
-            <span>Explora tu ciudad</span>
+        <Link to="/dashboard/favoritos">
+          ❤️ Favoritos
+        </Link>
 
-          </div>
+        <Link to="/dashboard/perfil">
+          👤 Perfil
+        </Link>
 
-        </div>
-
-        <nav>
-
-          <Link to="/dashboard">
-            <FaHome />
-            Inicio
-          </Link>
-
-          <Link to="/dashboard/lugares">
-            <FaMapMarkerAlt />
-            Lugares
-          </Link>
-
-          <Link to="/dashboard/eventos">
-            <FaCalendarAlt />
-            Eventos
-          </Link>
-
-          <Link to="/dashboard/favoritos">
-            <FaHeart />
-            Favoritos
-          </Link>
-
-          <Link to="/dashboard/perfil">
-            <FaUser />
-            Perfil
-          </Link>
-
-        </nav>
-
-      </div>
+      </nav>
 
       <div className="sidebar-footer">
+
+        <Link
+          to="/"
+          className="volver-home"
+        >
+          ← Volver al inicio
+        </Link>
 
         <button
           className="logout-btn"
           onClick={cerrarSesion}
         >
-          <FaSignOutAlt />
           Cerrar sesión
         </button>
 
       </div>
 
     </aside>
+
   );
 }
 

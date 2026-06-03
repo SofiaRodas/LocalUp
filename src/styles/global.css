@@ -1,19 +1,34 @@
+html,
+body,
+#root{
+  min-height: 100%;
+}
+
 html{
   scroll-behavior: smooth;
 }
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+body{
+
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #0F172A, #1E293B);
+
+  background: linear-gradient(
+    to bottom,
+    #0F172A,
+    #1E293B
+  ) !important;
+
   color: #F8FAFC;
+
+  min-height: 100vh;
 }
 
-.contenedor {
+.contenedor{
   width: 100%;
 }
