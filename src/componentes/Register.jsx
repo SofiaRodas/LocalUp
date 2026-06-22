@@ -20,6 +20,7 @@ function Register() {
     try {
 
       await registrarUsuario(
+        nombre,
         email,
         password
       );

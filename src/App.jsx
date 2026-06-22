@@ -14,6 +14,10 @@ import Favoritos from "./pages/dashboard/Favoritos";
 import Perfil from "./pages/dashboard/Perfil";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
+
+import LugarDetalle from "./pages/dashboard/LugarDetalle";
+
+
 function App() {
 
   return (
@@ -59,6 +63,15 @@ function App() {
         <Route
           path="/dashboard/lugares"
           element={<Lugares />}
+        />
+
+        <Route
+          path="/dashboard/lugar/:id"
+          element={
+            <ProtectedRoute>
+              <LugarDetalle />
+            </ProtectedRoute>
+          }
         />
 
         <Route

@@ -5,8 +5,13 @@ import Negocios from "./Negocios";
 import Contacto from "./Contacto";
 import Footer from "../componentes/Footer";
 
-function Home() {
+import { useAuth } from "../context/AuthContext";
 
+
+function Home() {
+  const { user } = useAuth();
+
+  console.log("Usuario actual:", user);
   return (
 
     <div className="contenedor">
@@ -20,6 +25,8 @@ function Home() {
 
     </div>
   );
+
+  
 }
 
 export default Home;

@@ -1,14 +1,63 @@
 import Sidebar from "../../componentes/dashboard/Sidebar";
 import Topbar from "../../componentes/dashboard/Topbar";
-import { auth } from "../../firebase/firebaseConfig";
-import "../../styles/dashboard/dashboardpages.css";
+
 import { useAuth } from "../../context/AuthContext";
 
+import { useEffect, useState } from "react";
+
+import {
+  obtenerUsuario,
+  actualizarUsuario
+} from "../../services/usuariosService";
+
+import "../../styles/dashboard/dashboardpages.css";
 
 function Perfil() {
-  
+
   const { user } = useAuth();
-  const usuario = auth.currentUser;
+
+  const [datos, setDatos] = useState(null);
+
+  const [editando, setEditando] = useState(false);
+
+  useEffect(() => {
+
+    const cargarPerfil = async () => {
+
+      if (!user) return;
+
+      const informacion = await obtenerUsuario(
+        user.uid
+      );
+
+      setDatos(informacion);
+    };
+
+    cargarPerfil();
+
+  }, [user]);
+
+  const guardarCambios = async () => {
+
+    await actualizarUsuario(
+      user.uid,
+      {
+        nombre: datos.nombre,
+        ubicacion: datos.ubicacion,
+        descripcion: datos.descripcion,
+        fotoPerfil: datos.fotoPerfil
+      }
+    );
+
+    setEditando(false);
+
+    alert("Perfil actualizado");
+  };
+
+  if (!datos) {
+
+    return <h2>Cargando perfil...</h2>;
+  }
 
   return (
 
@@ -22,32 +71,109 @@ function Perfil() {
 
         <section className="page-section perfil-section">
 
-          <img
-            src={usuario?.photoURL || "https://i.pravatar.cc/150?img=32"}
-            alt=""
-          />
+          <div className="perfil-card">
 
-          <h2>
-            Bienvenida {user?.email}
-          </h2>
+            <img
+              className="perfil-foto"
+              src={
+                datos.fotoPerfil ||
+                "https://i.pravatar.cc/200?img"
+              }
+              alt="Preview"
+            />
 
-          <p>
-            Exploradora urbana y amante de descubrir nuevos lugares.
-          </p>
+            {editando ? (
 
-          <div className="perfil-stats">
+              <>
+              <input
+                type="text"
+                placeholder="URL de la foto"
+                value={datos.fotoPerfil || ""}
+                onChange={(e) =>
+                  setDatos({
+                    ...datos,
+                    fotoPerfil: e.target.value
+                  })
+                }
+              />
+                <input
+                  type="text"
+                  value={datos.nombre}
+                  onChange={(e) =>
+                    setDatos({
+                      ...datos,
+                      nombre: e.target.value
+                    })
+                  }
+                />
 
-            <h2>Mi Perfil</h2>
+                <input
+                  type="text"
+                  value={datos.ubicacion}
+                  onChange={(e) =>
+                    setDatos({
+                      ...datos,
+                      ubicacion: e.target.value
+                    })
+                  }
+                />
 
-            <p>
-              <strong>Correo:</strong>
-              {usuario?.email}
-            </p>
+                <textarea
+                  value={datos.descripcion}
+                  onChange={(e) =>
+                    setDatos({
+                      ...datos,
+                      descripcion: e.target.value
+                    })
+                  }
+                />
 
-            <p>
-              <strong>UID:</strong>
-              {usuario?.uid}
-            </p>
+                <button
+                  className="editar-btn"
+                  onClick={guardarCambios}
+                >
+                  Guardar cambios
+                </button>
+
+              </>
+
+            ) : (
+
+              <>
+                <h2>{datos.nombre}</h2>
+
+                <p className="perfil-email">
+                  {user.email}
+                </p>
+
+                <div className="perfil-info">
+
+                  <div className="info-item">
+                    <strong>Ubicación</strong>
+                    <span>{datos.ubicacion}</span>
+                  </div>
+
+                  <div className="info-item">
+                    <strong>Tipo de usuario</strong>
+                    <span>{datos.tipoUsuario}</span>
+                  </div>
+
+                  <div className="info-item">
+                    <strong>Descripción</strong>
+                    <span>{datos.descripcion}</span>
+                  </div>
+
+                </div>
+
+                <button
+                  className="editar-btn"
+                  onClick={() => setEditando(true)}
+                >
+                  Editar perfil
+                </button>
+              </>
+
+            )}
 
           </div>
 

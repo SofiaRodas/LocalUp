@@ -3,9 +3,12 @@ import Topbar from "../../componentes/dashboard/Topbar";
 import StatsCard from "../../componentes/dashboard/StatsCard";
 import LugarCard from "../../componentes/dashboard/LugarCard";
 import ActivityCard from "../../componentes/dashboard/ActivityCard";
+
 import { useEffect, useState } from "react";
 import { obtenerLugares } from "../../services/lugaresService";
+
 import Mapa from "../../componentes/dashboard/Mapa";
+
 import "../../styles/dashboard/dashboard.css";
 
 import {
@@ -14,24 +17,22 @@ import {
   FaHeart
 } from "react-icons/fa";
 
-
-
 function Dashboard() {
+
   const [lugares, setLugares] = useState([]);
 
   useEffect(() => {
 
-  const cargarLugares = async () => {
+    const cargarLugares = async () => {
 
-    const data = await obtenerLugares();
+      const data = await obtenerLugares();
 
-    setLugares(data);
-  };
+      setLugares(data);
+    };
 
-  cargarLugares();
+    cargarLugares();
 
   }, []);
-
 
   return (
 
@@ -127,6 +128,7 @@ function Dashboard() {
       </main>
 
     </div>
+
   );
 }
 

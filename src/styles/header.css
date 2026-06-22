@@ -117,9 +117,27 @@
    BOTÓN
 ========================================= */
 
-.login-btn {
+/* =========================================
+   BOTONES HEADER
+========================================= */
 
-  background: #FACC15;
+.header-buttons{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-buttons a{
+  text-decoration: none;
+}
+
+.header-buttons button{
+
+  background: linear-gradient(
+    135deg,
+    #FACC15,
+    #EAB308
+  );
 
   color: #0F172A;
 
@@ -133,14 +151,25 @@
 
   font-weight: 700;
 
-  transition: .3s;
+  font-size: 15px;
+
+  transition: all .3s ease;
+
+  box-shadow:
+    0 4px 15px rgba(250,204,21,.25);
 }
 
-.login-btn:hover {
+.header-buttons button:hover{
 
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 
-  background: #FDE047;
+  box-shadow:
+    0 8px 20px rgba(250,204,21,.35);
+}
+
+.header-buttons button:active{
+
+  transform: translateY(0);
 }
 
 /* =========================================

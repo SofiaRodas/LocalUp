@@ -2,13 +2,11 @@ import "../../styles/dashboard/lugarcard.css";
 
 import { auth } from "../../firebase/firebaseConfig";
 
-import { agregarFavorito } from "../../services/favoritosService";
-
 import {
-  FaHeart,
-  FaStar,
-  FaMapMarkerAlt
-} from "react-icons/fa";
+  agregarFavorito
+} from "../../services/favoritosService";
+
+import { useNavigate } from "react-router-dom";
 
 function LugarCard({
   id,
@@ -18,9 +16,14 @@ function LugarCard({
   rating
 }) {
 
-  const guardarFavorito = async () => {
+  const navigate = useNavigate();
 
-    const usuario = auth.currentUser;
+  const guardarFavorito = async (e) => {
+
+    e.stopPropagation();
+
+    const usuario =
+      auth.currentUser;
 
     if (!usuario) return;
 
@@ -28,56 +31,48 @@ function LugarCard({
       usuario.uid,
       id
     );
+  };
 
-    alert("Lugar agregado a favoritos");
+  const abrirDetalle = () => {
+
+    navigate(
+      `/dashboard/lugar/${id}`
+    );
   };
 
   return (
 
-    <div className="lugar-card">
+    <div
+      className="lugar-card"
+      onClick={abrirDetalle}
+    >
 
-      <div className="lugar-img-container">
-
-        <img
-          src={imagen}
-          alt={nombre}
-        />
-
-        <button
-          className="heart-btn"
-          onClick={guardarFavorito}
-        >
-          <FaHeart />
-        </button>
-
-      </div>
+      <img
+        src={imagen}
+        alt={nombre}
+      />
 
       <div className="lugar-info">
 
-        <span className="categoria-badge">
-          <FaMapMarkerAlt />
-          {categoria}
-        </span>
-
         <h3>{nombre}</h3>
 
-        <div className="rating">
+        <p>{categoria}</p>
 
-          <FaStar />
-
-          <span>{rating}</span>
-
-        </div>
+        <span>
+          ⭐ {rating}
+        </span>
 
         <button
-          className="explorar-btn"
+          className="favorito-btn"
+          onClick={guardarFavorito}
         >
-          Ver detalles
+          ❤️ Guardar
         </button>
 
       </div>
 
     </div>
+
   );
 }
 

@@ -34,7 +34,7 @@ function Topbar() {
         <div className="topbar-user">
 
           <img
-            src="https://i.pravatar.cc/150?img=32"
+            src="https://i.pravatar.cc/200?img"
             alt="Usuario"
           />
 
