@@ -1,62 +1,28 @@
-import {
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  where
-} from "firebase/firestore";
+import axios from "axios";
 
-import { db } from "../firebase/firebaseConfig";
+const API_URL = "http://localhost:3001/api";
 
-export const agregarFavorito = async (
-  userId,
-  lugarId
-) => {
-
-  const consulta = query(
-    collection(db, "favoritos"),
-    where("userId", "==", userId),
-    where("lugarId", "==", lugarId)
-  );
-
-  const existe = await getDocs(
-    consulta
-  );
-
-  if (!existe.empty) {
-
-    alert("Este lugar ya está en favoritos");
-
-    return;
-  }
-
-  await addDoc(
-    collection(db, "favoritos"),
-    {
+export const agregarFavorito = async (userId, lugarId) => {
+  try {
+    await axios.post(`${API_URL}/favoritos`, {
       userId,
-      lugarId,
-      fecha: new Date()
-    }
-  );
+      lugarId
+    });
 
-  alert("Lugar agregado a favoritos");
+    alert("Lugar agregado a favoritos");
+  } catch (error) {
+    if (error.response?.status === 409) {
+      alert("Este lugar ya está en favoritos");
+      return;
+    }
+    throw error;
+  }
 };
 
-export const obtenerFavoritos = async (
-  userId
-) => {
+export const obtenerFavoritos = async (userId) => {
+  const respuesta = await axios.get(`${API_URL}/favoritos`, {
+    params: { userId }
+  });
 
-  const consulta = query(
-    collection(db, "favoritos"),
-    where("userId", "==", userId)
-  );
-
-  const snapshot = await getDocs(
-    consulta
-  );
-
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+  return respuesta.data;
 };

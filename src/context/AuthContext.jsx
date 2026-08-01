@@ -1,44 +1,25 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { onAuthStateChanged } from "firebase/auth";
-
-import { auth } from "../firebase/firebaseConfig";
-
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-
   const [user, setUser] = useState(null);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const usuarioGuardado = localStorage.getItem("usuarioLocalUp");
 
-    const unsubscribe = onAuthStateChanged(
-      auth,
-      (usuario) => {
+    if (usuarioGuardado) {
+      setUser(JSON.parse(usuarioGuardado));
+    }
 
-        setUser(usuario);
-
-        setLoading(false);
-      }
-    );
-
-    return unsubscribe;
-
+    setLoading(false);
   }, []);
 
   return (
-
-    <AuthContext.Provider
-      value={{
-        user,
-        loading
-      }}
-    >
+    <AuthContext.Provider value={{ user, loading, setUser }}>
       {children}
     </AuthContext.Provider>
-
   );
 }
 

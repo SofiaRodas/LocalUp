@@ -27,7 +27,7 @@ function Perfil() {
       if (!user) return;
 
       const informacion = await obtenerUsuario(
-        user.uid
+        user.id
       );
 
       setDatos(informacion);
@@ -40,7 +40,7 @@ function Perfil() {
   const guardarCambios = async () => {
 
     await actualizarUsuario(
-      user.uid,
+      user.id,
       {
         nombre: datos.nombre,
         ubicacion: datos.ubicacion,
@@ -143,7 +143,7 @@ function Perfil() {
                 <h2>{datos.nombre}</h2>
 
                 <p className="perfil-email">
-                  {user.email}
+                  {user.correo || user.email}
                 </p>
 
                 <div className="perfil-info">

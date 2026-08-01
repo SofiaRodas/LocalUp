@@ -1,7 +1,5 @@
 import "../../styles/dashboard/lugarcard.css";
 
-import { auth } from "../../firebase/firebaseConfig";
-
 import {
   agregarFavorito
 } from "../../services/favoritosService";
@@ -23,12 +21,12 @@ function LugarCard({
     e.stopPropagation();
 
     const usuario =
-      auth.currentUser;
+      JSON.parse(localStorage.getItem("usuarioLocalUp") || "null");
 
     if (!usuario) return;
 
     await agregarFavorito(
-      usuario.uid,
+      usuario.id,
       id
     );
   };

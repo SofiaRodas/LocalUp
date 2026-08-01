@@ -1,12 +1,10 @@
 import { FaSearch, FaBell } from "react-icons/fa";
 
-import { auth } from "../../firebase/firebaseConfig";
-
 import "../../styles/dashboard/topbar.css";
 
 function Topbar() {
 
-  const usuario = auth.currentUser;
+  const usuario = JSON.parse(localStorage.getItem("usuarioLocalUp") || "null");
 
   return (
 
@@ -42,7 +40,7 @@ function Topbar() {
 
             <span className="user-name">
 
-              {usuario?.email?.split("@")[0] || "Usuario"}
+              {(usuario?.nombre || usuario?.correo || usuario?.email || "Usuario").toString().split("@")[0]}
 
             </span>
 

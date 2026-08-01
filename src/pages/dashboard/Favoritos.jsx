@@ -30,7 +30,7 @@ function Favoritos() {
 
       const favoritos =
         await obtenerFavoritos(
-          user.uid
+          user.id
         );
 
       const lugaresFavoritos =

@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { iniciarSesion } from "../services/authService";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
 
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const [email, setEmail] = useState("");
 
@@ -16,9 +18,9 @@ function Login() {
     e.preventDefault();
 
     try {
-
-      await iniciarSesion(email, password);
-
+      const usuario = await iniciarSesion(email, password);
+      localStorage.setItem("usuarioLocalUp", JSON.stringify(usuario));
+      setUser(usuario);
       navigate("/dashboard");
 
     } catch (error) {

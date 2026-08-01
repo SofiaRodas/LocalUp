@@ -1,50 +1,20 @@
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc
-} from "firebase/firestore";
+import axios from "axios";
 
-import { db } from "../firebase/firebaseConfig";
+const API_URL = "http://localhost:3001/api";
 
 export const obtenerLugares = async () => {
-
-  const lugaresRef = collection(
-    db,
-    "lugares"
-  );
-
-  const snapshot = await getDocs(
-    lugaresRef
-  );
-
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+  const respuesta = await axios.get(`${API_URL}/lugares`);
+  return respuesta.data;
 };
 
-export const obtenerLugarPorId = async (
-  id
-) => {
-
-  const referencia = doc(
-    db,
-    "lugares",
-    id
-  );
-
-  const snapshot = await getDoc(
-    referencia
-  );
-
-  if (!snapshot.exists()) {
-
-    return null;
+export const obtenerLugarPorId = async (id) => {
+  try {
+    const respuesta = await axios.get(`${API_URL}/lugares/${id}`);
+    return respuesta.data;
+  } catch (error) {
+    if (error.response?.status === 404) {
+      return null;
+    }
+    throw error;
   }
-
-  return {
-    id: snapshot.id,
-    ...snapshot.data()
-  };
 };

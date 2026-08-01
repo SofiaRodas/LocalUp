@@ -1,70 +1,29 @@
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut
-} from "firebase/auth";
+import axios from "axios";
 
-import { auth } from "../firebase/firebaseConfig";
-import { db } from "../firebase/firebaseConfig";
+const API_URL = "http://localhost:3001/api";
 
-import {
-  doc,
-  setDoc
-} from "firebase/firestore";
+export const registrarUsuario = async (nombre, email, password) => {
+  const respuesta = await axios.post(`${API_URL}/usuarios/registro`, {
+    nombre,
+    email,
+    password
+  });
 
-
-export const registrarUsuario = async (
-  nombre,
-  email,
-  password
-) => {
-
-  const credenciales =
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  const usuario =
-    credenciales.user;
-
-  await setDoc(
-    doc(
-      db,
-      "usuarios",
-      usuario.uid
-    ),
-    {
-      nombre,
-      ubicacion: "",
-      descripcion: "",
-      tipoUsuario: "cliente",
-      fotoPerfil: "",
-      correo: email
-    }
-  );
-
-  return usuario;
+  return respuesta.data.usuario;
 };
 
 
-export const iniciarSesion = async (
-  email,
-  password
-) => {
-
-  return await signInWithEmailAndPassword(
-    auth,
+export const iniciarSesion = async (email, password) => {
+  const respuesta = await axios.post(`${API_URL}/usuarios/login`, {
     email,
     password
-  );
+  });
+
+  return respuesta.data.usuario;
 };
 
 
 
 export const cerrarSesion = async () => {
-
-  return await signOut(auth);
-
+  return true;
 };

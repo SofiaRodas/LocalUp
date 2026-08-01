@@ -1,43 +1,20 @@
-import {
-  doc,
-  getDoc,
-  updateDoc
-} from "firebase/firestore";
+import axios from "axios";
 
-import { db } from "../firebase/firebaseConfig";
+const API_URL = "http://localhost:3001/api";
 
 export const obtenerUsuario = async (uid) => {
-
-  const referencia = doc(
-    db,
-    "usuarios",
-    uid
-  );
-
-  const documento = await getDoc(referencia);
-
-  if (documento.exists()) {
-
-    return documento.data();
-
+  try {
+    const respuesta = await axios.get(`${API_URL}/usuarios/${uid}`);
+    return respuesta.data.usuario;
+  } catch (error) {
+    if (error.response?.status === 404) {
+      return null;
+    }
+    throw error;
   }
-
-  return null;
 };
 
-export const actualizarUsuario = async (
-  uid,
-  datos
-) => {
-
-  const referencia = doc(
-    db,
-    "usuarios",
-    uid
-  );
-
-  await updateDoc(
-    referencia,
-    datos
-  );
+export const actualizarUsuario = async (uid, datos) => {
+  const respuesta = await axios.put(`${API_URL}/usuarios/${uid}`, datos);
+  return respuesta.data.usuario;
 };

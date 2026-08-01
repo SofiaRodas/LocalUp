@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { registrarUsuario } from "../services/authService";
+import { useAuth } from "../context/AuthContext";
 
 function Register() {
 
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const [nombre, setNombre] = useState("");
 
@@ -19,12 +21,14 @@ function Register() {
 
     try {
 
-      await registrarUsuario(
+      const usuario = await registrarUsuario(
         nombre,
         email,
         password
       );
 
+      localStorage.setItem("usuarioLocalUp", JSON.stringify(usuario));
+      setUser(usuario);
       alert("Usuario creado correctamente");
 
       navigate("/dashboard");
