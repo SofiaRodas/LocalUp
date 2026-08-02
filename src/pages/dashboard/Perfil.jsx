@@ -14,7 +14,10 @@ import "../../styles/dashboard/dashboardpages.css";
 
 function Perfil() {
 
-  const { user } = useAuth();
+  const {
+    user,
+    setUser
+  } = useAuth();
 
   const [datos, setDatos] = useState(null);
 
@@ -26,11 +29,10 @@ function Perfil() {
 
       if (!user) return;
 
-      const informacion = await obtenerUsuario(
-        user.id
-      );
+      const informacion = await obtenerUsuario(user.id);
 
       setDatos(informacion);
+
     };
 
     cargarPerfil();
@@ -39,24 +41,54 @@ function Perfil() {
 
   const guardarCambios = async () => {
 
-    await actualizarUsuario(
-      user.id,
-      {
+    try {
+
+      await actualizarUsuario(
+        user.id,
+        {
+          nombre: datos.nombre,
+          ubicacion: datos.ubicacion,
+          descripcion: datos.descripcion,
+          fotoPerfil: datos.fotoPerfil
+        }
+      );
+
+      const usuarioActualizado = {
+
+        ...user,
+
         nombre: datos.nombre,
+
         ubicacion: datos.ubicacion,
+
         descripcion: datos.descripcion,
+
         fotoPerfil: datos.fotoPerfil
-      }
-    );
 
-    setEditando(false);
+      };
 
-    alert("Perfil actualizado");
+      setUser(usuarioActualizado);
+
+      setDatos(usuarioActualizado);
+
+      setEditando(false);
+
+      alert("Perfil actualizado correctamente");
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert("Error al actualizar el perfil");
+
+    }
+
   };
 
   if (!datos) {
 
     return <h2>Cargando perfil...</h2>;
+
   }
 
   return (
@@ -77,28 +109,31 @@ function Perfil() {
               className="perfil-foto"
               src={
                 datos.fotoPerfil ||
-                "https://i.pravatar.cc/200?img"
+                "https://i.pravatar.cc/200?img=32"
               }
-              alt="Preview"
+              alt="Perfil"
             />
 
             {editando ? (
 
               <>
-              <input
-                type="text"
-                placeholder="URL de la foto"
-                value={datos.fotoPerfil || ""}
-                onChange={(e) =>
-                  setDatos({
-                    ...datos,
-                    fotoPerfil: e.target.value
-                  })
-                }
-              />
+
                 <input
                   type="text"
-                  value={datos.nombre}
+                  placeholder="URL de la foto"
+                  value={datos.fotoPerfil || ""}
+                  onChange={(e) =>
+                    setDatos({
+                      ...datos,
+                      fotoPerfil: e.target.value
+                    })
+                  }
+                />
+
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  value={datos.nombre || ""}
                   onChange={(e) =>
                     setDatos({
                       ...datos,
@@ -109,7 +144,8 @@ function Perfil() {
 
                 <input
                   type="text"
-                  value={datos.ubicacion}
+                  placeholder="Ubicación"
+                  value={datos.ubicacion || ""}
                   onChange={(e) =>
                     setDatos({
                       ...datos,
@@ -119,7 +155,8 @@ function Perfil() {
                 />
 
                 <textarea
-                  value={datos.descripcion}
+                  placeholder="Descripción"
+                  value={datos.descripcion || ""}
                   onChange={(e) =>
                     setDatos({
                       ...datos,
@@ -140,27 +177,39 @@ function Perfil() {
             ) : (
 
               <>
+
                 <h2>{datos.nombre}</h2>
 
                 <p className="perfil-email">
+
                   {user.correo || user.email}
+
                 </p>
 
                 <div className="perfil-info">
 
                   <div className="info-item">
+
                     <strong>Ubicación</strong>
+
                     <span>{datos.ubicacion}</span>
+
                   </div>
 
                   <div className="info-item">
+
                     <strong>Tipo de usuario</strong>
+
                     <span>{datos.tipoUsuario}</span>
+
                   </div>
 
                   <div className="info-item">
+
                     <strong>Descripción</strong>
+
                     <span>{datos.descripcion}</span>
+
                   </div>
 
                 </div>
@@ -171,6 +220,7 @@ function Perfil() {
                 >
                   Editar perfil
                 </button>
+
               </>
 
             )}
@@ -182,7 +232,9 @@ function Perfil() {
       </main>
 
     </div>
+
   );
+
 }
 
 export default Perfil;

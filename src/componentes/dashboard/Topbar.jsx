@@ -1,10 +1,12 @@
 import { FaSearch, FaBell } from "react-icons/fa";
 
+import { useAuth } from "../../context/AuthContext";
+
 import "../../styles/dashboard/topbar.css";
 
 function Topbar() {
 
-  const usuario = JSON.parse(localStorage.getItem("usuarioLocalUp") || "null");
+  const { user } = useAuth();
 
   return (
 
@@ -32,20 +34,28 @@ function Topbar() {
         <div className="topbar-user">
 
           <img
-            src="https://i.pravatar.cc/200?img"
+
+            src={
+              user?.fotoPerfil ||
+              "https://i.pravatar.cc/200?img=32"
+            }
+
             alt="Usuario"
+
           />
 
           <div>
 
             <span className="user-name">
 
-              {(usuario?.nombre || usuario?.correo || usuario?.email || "Usuario").toString().split("@")[0]}
+              {user?.nombre || "Usuario"}
 
             </span>
 
             <small>
+
               Miembro LocalUp
+
             </small>
 
           </div>
@@ -55,7 +65,9 @@ function Topbar() {
       </div>
 
     </header>
+
   );
+
 }
 
 export default Topbar;
