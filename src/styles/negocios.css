@@ -5,6 +5,20 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .negocios {
+    padding: 70px 20px;
+  }
+
+  .negocios h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .cards-negocios {
+    grid-template-columns: 1fr;
+  }
+}
 .negocios h2{
 
   color: #F8FAFC;

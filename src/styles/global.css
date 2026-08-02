@@ -15,20 +15,18 @@ html{
 }
 
 body{
-
   font-family: Arial, sans-serif;
-
   background: linear-gradient(
     to bottom,
     #0F172A,
     #1E293B
   ) !important;
-
   color: #F8FAFC;
-
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .contenedor{
   width: 100%;
+  max-width: 100%;
 }

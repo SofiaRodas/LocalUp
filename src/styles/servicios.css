@@ -5,6 +5,21 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .servicios {
+    padding: 70px 20px;
+  }
+
+  .servicios h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+}
+
 .section-tag{
 
   display: inline-block;

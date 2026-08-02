@@ -223,6 +223,18 @@
 ========================================= */
 
 @media (max-width:768px){
+  .page-section h1 {
+    font-size: 2rem;
+  }
+
+  .page-section p {
+    font-size: 1rem;
+  }
+
+  .page-grid,
+  .favoritos-grid {
+    grid-template-columns: 1fr;
+  }
 
   .perfil-card{
     padding: 25px;
@@ -235,5 +247,11 @@
   .perfil-foto{
     width: 120px;
     height: 120px;
+  }
+
+  .page-card,
+  .favorito-card,
+  .evento-card {
+    padding: 24px;
   }
 }

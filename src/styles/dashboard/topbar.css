@@ -6,6 +6,23 @@
   gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .topbar-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .topbar-user {
+    flex: 1;
+    justify-content: center;
+  }
+}
 /* ==========================
    BUSCADOR
 ========================== */

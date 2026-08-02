@@ -1,42 +1,66 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
+import { useAuth } from "../../context/AuthContext";
 import "../../styles/dashboard/sidebar.css";
 
 function Sidebar() {
 
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(true);
+  const { setUser } = useAuth();
 
   const cerrarSesion = async () => {
     localStorage.removeItem("usuarioLocalUp");
-    navigate("/");
+    setUser(null);
+    setIsOpen(false);
+    navigate("/login");
   };
 
-  return (
+  const cerrarMenu = () => setIsOpen(false);
 
-    <aside className="sidebar">
+  return (
+    <>
+      <button
+        type="button"
+        className={`sidebar-toggle ${isOpen ? "active" : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Abrir menú"
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <div
+        className={`sidebar-overlay ${isOpen ? "active" : ""}`}
+        onClick={cerrarMenu}
+      />
+
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
 
       <h2>LocalUp</h2>
 
       <nav>
 
-        <Link to="/dashboard">
+        <Link to="/dashboard" onClick={cerrarMenu}>
           🏠 Inicio
         </Link>
 
-        <Link to="/dashboard/lugares">
+        <Link to="/dashboard/lugares" onClick={cerrarMenu}>
           📍 Lugares
         </Link>
 
-        <Link to="/dashboard/eventos">
+        <Link to="/dashboard/eventos" onClick={cerrarMenu}>
           📅 Eventos
         </Link>
 
-        <Link to="/dashboard/favoritos">
+        <Link to="/dashboard/favoritos" onClick={cerrarMenu}>
           ❤️ Favoritos
         </Link>
 
-        <Link to="/dashboard/perfil">
+        <Link to="/dashboard/perfil" onClick={cerrarMenu}>
           👤 Perfil
         </Link>
 
@@ -47,6 +71,7 @@ function Sidebar() {
         <Link
           to="/"
           className="volver-home"
+          onClick={cerrarMenu}
         >
           ← Volver al inicio
         </Link>
@@ -61,7 +86,7 @@ function Sidebar() {
       </div>
 
     </aside>
-
+    </>
   );
 }
 

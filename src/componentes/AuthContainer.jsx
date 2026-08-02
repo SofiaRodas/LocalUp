@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import '../styles/auth.css'
@@ -6,10 +7,19 @@ import '../styles/auth.css'
 function AuthContainer() {
 
   const [mostrarLogin, setMostrarLogin] = useState(true);
+  const navigate = useNavigate();
 
   return (
 
     <section className="auth-container">
+
+      <button
+        type="button"
+        className="back-home-btn"
+        onClick={() => navigate("/")}
+      >
+        ← Inicio
+      </button>
 
       <div className="auth-box">
 
